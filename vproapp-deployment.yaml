@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        name: vproapp
+        app: vproapp
     spec:
       containers:
         - name: vproapp
