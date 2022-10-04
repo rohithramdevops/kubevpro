@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vprodb
@@ -6,7 +6,7 @@ metadata:
     app: vprodb
 spec:
   selector:
-    matchlabels:
+    matchLabels:
       app: vprodb
   replicas: 1
   template:
@@ -27,7 +27,7 @@ spec:
               containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              valuefrom:
+              valueFrom:
                 secretKeyRef:
                   name: app-secret
                   key: db-pass
@@ -35,8 +35,8 @@ spec:
         zone: us-east-1a
       volumes:
         - name: vpro-db-data
-          awsElasticBlockStorage:
+          awsElasticBlockStore:
             volumeID: vol-03028a2d32174a613
-            fstype: ext4
+            fsType: ext4
 
 
